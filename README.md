@@ -31,7 +31,7 @@ LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/user/Downloads/fastPCA/lib"`.
 * Variety of input formats and use cases
   * From memory in R
   * CSV format
-  * plink's binary [BED format] (http://pngu.mgh.harvard.edu/~purcell/plink/binary.shtml) for GWAS data. 
+  * plink's binary [BED format](http://pngu.mgh.harvard.edu/~purcell/plink/binary.shtml) for GWAS data. 
 * All matrix algebra is done with Intel MKL (pre-compiled version already linked) making it extremely fast
 * The calculations are 'blocked' allowing it to be 'out-of-core' when necessary, so that the user to specify the maximum amount of memory to be used.
   * CSV files: when too large for the memory, read block by block from the hard drive
