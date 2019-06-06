@@ -14,7 +14,7 @@
 
 //fastRPCA is the function that is called by using the R .Call interface in the RcppExports.R file.  This function then proceeds to call the respective function in the ExternalInterace file
 using namespace Rcpp;
-RcppExport SEXP fastRPCA(SEXP inputFormat_temp, SEXP inputMatrix_temp,SEXP m_temp, SEXP n_temp, SEXP k_temp, SEXP l_temp, SEXP its_temp, SEXP memory_temp,SEXP centering_row_temp, SEXP centering_column_temp, SEXP diffsnorm_temp){
+RcppExport SEXP fastRPCA(SEXP inputFormat_temp, SEXP inputMatrix_temp,SEXP m_temp, SEXP n_temp, SEXP k_temp, SEXP l_temp, SEXP its_temp, SEXP memory_temp,SEXP centering_row_temp, SEXP centering_column_temp, SEXP diffsnorm_temp, SEXP seed_temp){
 
 	std::string inputFormat = Rcpp::as<std::string>(inputFormat_temp);
 
@@ -40,6 +40,9 @@ RcppExport SEXP fastRPCA(SEXP inputFormat_temp, SEXP inputMatrix_temp,SEXP m_tem
 	int centering_row = Rcpp::as<int>(centering_row_temp);
 	int centering_column = Rcpp::as<int>(centering_column_temp);
 
+	//Random seed
+	int seed = Rcpp::as<int>(seed_temp);
+
 	//fastpca_debug_print("Input format: %s", inputFormat.c_str());
 
 	//fastpca_debug_print("%s", "Checking input formats\n");
@@ -61,7 +64,7 @@ RcppExport SEXP fastRPCA(SEXP inputFormat_temp, SEXP inputMatrix_temp,SEXP m_tem
 	if (inputFormat == "memory"){
 		Rcpp::NumericVector X(inputMatrix_temp);
 		double * inputMatrixRaw = X.begin();
-		returnCode = fastPCAMemory(inputMatrixRaw, &U, &S, &V, m,n,k, l, its, centering_row, centering_column, dits, diffsnorm, snorm);
+		returnCode = fastPCAMemory(inputMatrixRaw, &U, &S, &V, m,n,k, l, its, centering_row, centering_column, dits, diffsnorm, snorm, seed);
 		m_ = m;
 		n_ = n;
 

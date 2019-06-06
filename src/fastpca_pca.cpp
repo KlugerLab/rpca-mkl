@@ -2,7 +2,7 @@
 #include "fastpca_pca.hpp"
 //#include "mkl_cblas_gcl.h"
 int fastpca_pca( long long k, long long l, 
-		InputMatrix * A, double* U, double * S, double *V, long long its){
+		InputMatrix * A, double* U, double * S, double *V, long long its, int seed){
 using namespace std::chrono;
  
 	int m = A->m;
@@ -46,6 +46,7 @@ using namespace std::chrono;
 
 
 
+
 	/*********************************************************************
 	 *  Apply A to a random (n,l) matrix, Ran, obtaining Q (m,l)
 	 */
@@ -54,7 +55,7 @@ using namespace std::chrono;
 	//if (NULL == Ran) {
 		//return -30;
 	//}
-	fastpca_populate_matrix_random (m,l,Ran);
+	fastpca_populate_matrix_random (m,l,Ran, seed);
 	//Matrix product: Q=A'*Ran
 	//Dimensions: (n,l)=(m,n)'*(m,l)
 	double * Q = (double *)fastpca_aligned_alloc(64, n*l*sizeof( double ));

@@ -40,7 +40,7 @@ fastPCA_base <- function(result, k) { result$U <- t(matrix(result$U, ncol = resu
 #' str(fastDecomp)
 #' norm(D - fastDecomp$U %*% fastDecomp$S %*%t(fastDecomp$V), type='2')
 #' @export
-fastPCA<- function (inputMatrix,k=5, l, its=2,diffsnorm=FALSE,centeringRow=FALSE, centeringColumn = FALSE) {
+fastPCA<- function (inputMatrix,k=5, l, its=2,diffsnorm=FALSE,centeringRow=FALSE, centeringColumn = FALSE, seed=-1) {
 
 	if (missing(l)){
 		l = k+2;
@@ -80,7 +80,7 @@ fastPCA<- function (inputMatrix,k=5, l, its=2,diffsnorm=FALSE,centeringRow=FALSE
 	n = nrow(inputMatrix);
 	m = ncol(inputMatrix);
 	
-	result = .Call( 'fastRPCA', 'memory', as.matrix(inputMatrix), m, n, k,l,its, -1, FALSE, FALSE,diffsnorm, PACKAGE = 'fastRPCA');
+	result = .Call( 'fastRPCA', 'memory', as.matrix(inputMatrix), m, n, k,l,its, -1, FALSE, FALSE,diffsnorm, seed, PACKAGE = 'fastRPCA');
 	V<- t(matrix(result$U, ncol = m, nrow = k))
 	result$U <- t(matrix(result$V, ncol = n, nrow = k))
 	result$V <-  V;

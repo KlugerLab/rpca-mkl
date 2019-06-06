@@ -79,7 +79,7 @@ int fastPCAFile (int inputFormat, const char *inputFileName, double **U, double 
 	*S = (double *)fastpca_aligned_alloc( 64, (long long) k*k*sizeof( double ));
 	*V = (double *)fastpca_aligned_alloc( 64, (long long) k*inputMatrix->n*sizeof( double ));
 
-	info = fastpca_pca(k,l, inputMatrix, *U,*S,*V,its);
+	info = fastpca_pca(k,l, inputMatrix, *U,*S,*V,its,-1 );
 	if (info <0 ) {
 	//TODO: error here
 		char error [100];
@@ -111,7 +111,7 @@ return 1;
 
 }
 
- int fastPCAMemory ( double * A, double **U, double **S, double **V, long long m, long long n, long long k, long long l, long long its,  int centering_row, int centering_column, int dits, int diffsnorm, double& snorm) {
+ int fastPCAMemory ( double * A, double **U, double **S, double **V, long long m, long long n, long long k, long long l, long long its,  int centering_row, int centering_column, int dits, int diffsnorm, double& snorm, int seed) {
 
 	 
 	InputMatrix * inputMatrix;
@@ -160,7 +160,7 @@ return 1;
 	*S = (double *)fastpca_aligned_alloc( 64, (long long) k*k*sizeof( double ));
 	*V = (double *)fastpca_aligned_alloc( 64, (long long) k*inputMatrix->n*sizeof( double ));
 
-	info = fastpca_pca(k,l, inputMatrix, *U,*S,*V,its);
+	info = fastpca_pca(k,l, inputMatrix, *U,*S,*V,its, seed);
 	if (info <0 ) {
 		char error [100];
 		sprintf(error,"An unknown error has occured in fastpca_pca: %d", info); 

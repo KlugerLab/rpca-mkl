@@ -562,7 +562,7 @@ using namespace std::chrono;
 	double * S = (double *)fastpca_aligned_alloc(64, (long long) k*k*sizeof( double ));
 	double * V = (double *)fastpca_aligned_alloc( 64, (long long) k*inputMatrix->n*sizeof( double ));
 
-	info = fastpca_pca(k,l, inputMatrix, U,S,V,its);
+	info = fastpca_pca(k,l, inputMatrix, U,S,V,its, -1);
 	if (info <0 ) {
 		std::cerr << "pca() returned an error code of "<< info << std::endl;
 		return -1;

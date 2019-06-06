@@ -72,7 +72,7 @@
 
  */
 int fastpca_pca( long long k, long long l, 
-		InputMatrix * A, double* U, double * S, double *V, long long its);
+		InputMatrix * A, double* U, double * S, double *V, long long its, int seed_ );
 
 
 #endif /* FASTPCA_PCA_H */

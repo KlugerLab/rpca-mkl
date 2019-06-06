@@ -1,4 +1,5 @@
-EXE_INCLUDEPATH = -I../include
+MKL_INCLUDE=/data/george/intel/compilers_and_libraries_2019/linux/mkl/include/
+EXE_INCLUDEPATH=-I../include
 #CFLAGS=-O3 -std=c++0x -m64 -DMKL_ILP64 -fopenmp -DDEBUG -DUSE_MKL
 CFLAGS=-O3 -std=c++0x -m64 -DMKL_ILP64 -fopenmp -DUSE_MKL
 
@@ -17,8 +18,9 @@ else
 
 #Linux
 CFLAGS+=-DMKL_CUSTOM_LIBRARY='"libfastpca_custommkl.so"'
-EXE_INCLUDEPATH = -I../include -I/opt/intel/composer_xe_2015.1.133/mkl/include/
-LIBS =  -Wl,--no-as-needed  -L../lib -lfastpca_custommkl -liomp5 -ldl -lpthread -lm -Wl,-rpath,/data/Linderman/FastPCA5/FastPCA/lib
+EXE_INCLUDEPATH = -I../include -I$(MKL_INCLUDE)
+#LIBS =  -Wl,--no-as-needed  -L../lib -lfastpca_custommkl -liomp5 -ldl -lpthread -lm -Wl,-rpath,/data/Linderman/FastPCA5/FastPCA/lib
+LIBS =  -Wl,--no-as-needed  -L../lib -lfastpca_custommkl -liomp5 -ldl -lpthread -lm
 CC = g++
 R_TARGET = ../fastRPCA/inst/libs/libfastpca.so
 

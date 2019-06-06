@@ -45,6 +45,7 @@ int fastpca_gemm(CBLAS_ORDER layout, CBLAS_TRANSPOSE transposeA,
  ** long long  m -- number of rows in the input matrix
  ** long long  n -- number of columns  in the input matrix
  ** double * A -- The matrix being populated
+ ** int seed -- Seed for srand. <1 uses time.
  *
  *  OUTPUTS
  ** double * A -- The matrix, populated with the random values
@@ -54,7 +55,7 @@ int fastpca_gemm(CBLAS_ORDER layout, CBLAS_TRANSPOSE transposeA,
  **               ier=0 means that the function executed successfully
 
  */
-int fastpca_populate_matrix_random (long long m, long long n, double * A);
+int fastpca_populate_matrix_random (long long m, long long n, double * A, int seed);
 
 /*********************************************************************
  *  Divide matrix by a scalar.

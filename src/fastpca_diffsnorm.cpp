@@ -26,7 +26,7 @@ int fastpca_diffsnorm(  InputMatrix* A, double* U, double* S , double* V,long lo
 		if (NULL == x) {
 			return -30;
 		}
-		fastpca_populate_matrix_random(n,1,x);
+		fastpca_populate_matrix_random(n,1,x, -1);
 
 		double norm = cblas_dnrm2(n, x, 1);
 
