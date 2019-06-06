@@ -50,7 +50,7 @@ void  fastpca_aligned_free(void* ptr) {
 }
 int fastpca_populate_matrix_random (long long m, long long n, double * A, int seed_) {
         unsigned int seed;
-        if ( seed < 0 ){
+        if ( seed_ < 0 ){
             seed = time(NULL);
         }else{
             seed = seed_;
