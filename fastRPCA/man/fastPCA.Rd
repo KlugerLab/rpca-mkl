@@ -5,7 +5,7 @@
 \title{Perform fast SVD for a matrix in the memory}
 \usage{
 fastPCA(inputMatrix, k = 5, l, its = 2, diffsnorm = FALSE,
-  centeringRow = FALSE, centeringColumn = FALSE)
+  centeringRow = FALSE, centeringColumn = FALSE, seed = -1)
 }
 \arguments{
 \item{inputMatrix}{Matrix to decompose.}
@@ -41,4 +41,3 @@ fastDecomp <- fastPCA(D, k=k_, diffsnorm=TRUE)
 str(fastDecomp)
 norm(D - fastDecomp$U \%*\% fastDecomp$S \%*\%t(fastDecomp$V), type='2')
 }
-

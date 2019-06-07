@@ -17,4 +17,3 @@ A FastPCA object, containing the decomposition.
 \description{
 This is an internal function that formats the resulting fastPCA object so that it can be handled appropriately by R
 }
-

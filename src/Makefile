@@ -2,7 +2,7 @@ MKL_INCLUDE=/opt/intel/compilers_and_libraries_2019.4.233/mac/mkl/include/ #Repl
 
 EXE_INCLUDEPATH=-I../include
 #CFLAGS=-O3 -std=c++0x -m64 -DMKL_ILP64 -fopenmp -DDEBUG -DUSE_MKL
-CFLAGS=-O3 -std=c++0x -m64 -DMKL_ILP64   -Xpreprocessor -fopenmp -lomp -DUSE_MKL
+CFLAGS=-O3 -std=c++0x -m64 -DMKL_ILP64   -Xpreprocessor  -DUSE_MKL
 
 platform=$(shell uname)
 ifeq ($(platform),Darwin)
