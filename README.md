@@ -3,8 +3,8 @@ RPCA-MKL is a Intel MKL-based, out-of-core C++ implementation of randomized SVD 
 
 ## R Package Installation
 
-1. Install devtools: `install.packages('devtools')`
-2. Install fastRPCA: `devtools::install_github("linqiaozhi/rpca-mkl",subdir="fastRPCA")`
+1. If you don't have it already, install devtools: `install.packages('devtools')`
+2. Install fastRPCA: `devtools::install_github("KlugerLab/rpca-mkl",subdir="fastRPCA")`
 
 Or, if you do not want to install devtools,
 1.  Clone this git repository
