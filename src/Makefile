@@ -1,25 +1,24 @@
-MKL_INCLUDE=/data/george/intel/compilers_and_libraries_2019/linux/mkl/include/
+MKL_INCLUDE=/opt/intel/compilers_and_libraries_2019.4.233/mac/mkl/include/ #Replace with the path on your machine
+
 EXE_INCLUDEPATH=-I../include
 #CFLAGS=-O3 -std=c++0x -m64 -DMKL_ILP64 -fopenmp -DDEBUG -DUSE_MKL
-CFLAGS=-O3 -std=c++0x -m64 -DMKL_ILP64 -fopenmp -DUSE_MKL
-
+CFLAGS=-O3 -std=c++0x -m64 -DMKL_ILP64   -Xpreprocessor -fopenmp -lomp -DUSE_MKL
 
 platform=$(shell uname)
 ifeq ($(platform),Darwin)
 #mac
 CFLAGS += -DOSX
-EXE_INCLUDEPATH = -I../include  -I/opt/intel/compilers_and_libraries_2016.1.111/mac/mkl/include/ 
+EXE_INCLUDEPATH = -I../include  -I$(MKL_INCLUDE)
 CFLAGS+=-DMKL_CUSTOM_LIBRARY='"libfastpca_custommkl.dylib"'
-#LIBS =  -L../lib  -lfastpca_custommkl -L../lib -liomp5 -ldl -lpthread -lm -Wl,-rpath,/Users/george/Research_Local/FastPCA4/FastPCA/lib
-LIBS =  -L../lib  -lfastpca_custommkl -L../lib -liomp5 -ldl -lpthread -lm -Wl,-rpath,/Users/george/Research_Local/FastPCA4/FastPCA/lib  -DMKL_ILP64 -m64
-CC = clang-omp++
+LIBS =  -L../lib  -lfastpca_custommkl -L../lib -liomp5 -ldl -lpthread -lm   -DMKL_ILP64 -m64
+CC = /usr/bin/clang++
 R_TARGET = ../fastRPCA/inst/libs/libfastpca.dylib
+
 else
 
 #Linux
 CFLAGS+=-DMKL_CUSTOM_LIBRARY='"libfastpca_custommkl.so"'
 EXE_INCLUDEPATH = -I../include -I$(MKL_INCLUDE)
-#LIBS =  -Wl,--no-as-needed  -L../lib -lfastpca_custommkl -liomp5 -ldl -lpthread -lm -Wl,-rpath,/data/Linderman/FastPCA5/FastPCA/lib
 LIBS =  -Wl,--no-as-needed  -L../lib -lfastpca_custommkl -liomp5 -ldl -lpthread -lm
 CC = g++
 R_TARGET = ../fastRPCA/inst/libs/libfastpca.so
