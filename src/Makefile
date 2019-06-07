@@ -52,30 +52,3 @@ R_target: $(EXE_OBJ_FILES)
 #Build the CPP files into objects
 ../build/%.o: %.cpp
 	$(CC) $(CFLAGS) -fPIC -c -o $@ $< $(EXE_INCLUDEPATH) 
-#install_name_tool -change libiomp5.dylib /Users/george/Research_Local/FastPCA4/FastPCA/lib/libiomp5.dylib libfastpca_custommkl.dylib
-#install_name_tool -change libiomp5.dylib @rpath/libiomp5.dylib libfastpca_custommkl.dylib
-
-
-#install_name_tool -id "@rpath/libiomp5.dylib" ../lib/libiomp5.dylib
-#install_name_tool -id "@rpath/libfastpca_custommkl.dylib" libfastpca_custommkl.dylib
-#install_name_tool -add_rpath %s  fastrpca.so
-#otool -D libfastpca_custommkl.dylib 
-#Plan: Make all the names for libraries to be rpath, and then just add rpath to each of the libraries.
-
-
-
-#CHANGE_SCRIPT=`echo 'system(sprintf("install_name_tool -change libiomp5.dylib %s/libiomp5.dylib %s/libfastpca_custommkl.dylib",system.file("libs", package="fastRPCA"), system.file("libs", package="fastRPCA") ))' | R --vanilla --slave`
-#CHANGE_SCRIPT=`echo 'system(sprintf("install_name_tool -change /Users/george/Research_Local/FastPCA4/FastPCA/lib/libfastpca_custommkl.dylib  %s/libfastpca_custommkl.dylib %s/libfastpca.so",system.file("libs", package="fastRPCA"), system.file("libs", package="fastRPCA") ))' | R --vanilla --slave`
-#CHANGE_SCRIPT=`echo 'system(sprintf('install_name_tool -change /Users/george/Research_Local/FastPCA4/FastPCA/lib/libiomp5.dylib %s/libiomp5.dylib %s/libfastpca.so',system.file("libs", package="fastRPCA"), system.file("libs", package="fastRPCA") ))' | R --vanilla --slave`
-
-#install_name_tool -change /usr/local/lib/gcc/5/libgcc_s.1.dylib  @rpath/libgcc_s.1.dylib ../fastRPCA/inst/libs/libfastpca.dylib
-#install_name_tool -change /usr/local/lib/gcc/5/libgcc_s.1.dylib  @rpath/libgcc_s.1.dylib ../fastRPCA/inst/libs/libfastpca.dylib
-
-#Need tor un this everytime you make the file
-#install_name_tool -id "@rpath/libfastpca.dylib" inst/libs/libfastpca.dylib
-
-
-#This works:
-#CHANGE_SCRIPT=`echo 'system(sprintf("install_name_tool -add_rpath %s  %s/libfastpca.so",system.file("libs", package="fastRPCA"), system.file("libs", package="fastRPCA") ))' | R --vanilla --slave`
-
-
