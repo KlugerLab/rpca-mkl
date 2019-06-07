@@ -3,8 +3,8 @@ RPCA-MKL is a Intel MKL-based, out-of-core C++ implementation of randomized SVD 
 
 ## R Package Installation
 
-1. Install devtools: `install.packages('devtools')`
-2. Install fastRPCA: `devtools::install_github("linqiaozhi/rpca-mkl",subdir="fastRPCA")`
+1. If you don't have it already, install devtools: `install.packages('devtools')`
+2. Install fastRPCA: `devtools::install_github("KlugerLab/rpca-mkl",subdir="fastRPCA")`
 
 Or, if you do not want to install devtools,
 1.  Clone this git repository
@@ -35,3 +35,12 @@ This packages uses Intel Math Kernel Library, which has highly optimized impleme
 1. Update the `MKL_INCLUDE` path in the Makefile. Make sure the compiler in the `CC` variable is openmp compatible.  On OS X, for example, you can use homebrew to install libiomp5 for Clang/LLVM. Just be sure that it is the compiler being used.
 2. Run  `make` in the `src` folder.
 3. You may need to export the `LD_LIBRARY_PATH` or (on OS X)  `DYLD_LIBRARY_PATH` so that the new executable can find the necessary dynamic libraries in the `lib` folder. For example: ` export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/user/Downloads/fastPCA/lib"`. 
+
+## References
+This implementation is based on Algorithm 2 of the following paper:
+
+George C. Linderman, Manas Rachh, Jeremy G. Hoskins, Stefan Steinerberger, Yuval Kluger. (2019). Fast interpolation-based t-SNE for improved visualization of single-cell RNA-seq data. Nature Methods. ([link](https://www.nature.com/articles/s41592-018-0308-4))
+
+An excellent reference for randomized SVD is the following paper:
+
+Halko, Nathan, Per-Gunnar Martinsson, and Joel A. Tropp. "Finding structure with randomness: Probabilistic algorithms for constructing approximate matrix decompositions." SIAM review 53.2 (2011): 217-288.
