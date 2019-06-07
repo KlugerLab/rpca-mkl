@@ -20,11 +20,6 @@ Test the code by running the following:
 
 `source(sprintf("%s/test.R", system.file("tests", package="fastRPCA")))`
 
-## Installing Command-line Implementation
-1. Clone this git repository
-2. Export the `LD_LIBRARY_PATH` or (on OS X)  `DYLD_LIBRARY_PATH` so that the new executable can find the
-   necessary dynamic libraries in the `lib` folder.  ` export
-LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/user/Downloads/fastPCA/lib"`. 
 
 ## Features
 * All matrix algebra is done with Intel MKL (pre-compiled version already linked) making it extremely fast
