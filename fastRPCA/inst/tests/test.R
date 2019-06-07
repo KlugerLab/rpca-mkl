@@ -1,6 +1,5 @@
 require(fastRPCA)
 
-context("Small in-memory matrices")
 testDim <- c(10E1, 10E2)
 for (m in testDim){
     for (n in testDim){
