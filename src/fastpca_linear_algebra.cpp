@@ -138,19 +138,8 @@ int fastpca_lu_l(long long m, long long n, double * A) {
 	 * Perform the LU decomposition using the ?GETRF function.  P is a 
 	 * permutation matrix that is necessary to pass, but will not be used
 	 */
-	 //TODO:MACROFY? Change the lapack_int, me thinks
-	//long long * P = (long long *)fastpca_aligned_alloc(64, m*sizeof( long long ));
-	//lapack_int * P = (lapack_int*)fastpca_aligned_alloc(64, m*sizeof( lapack_int));
-	lapack_int * P = (lapack_int*)fastpca_aligned_alloc(64, m*sizeof( lapack_int));
-	//int * P = (int  *)fastpca_aligned_alloc(64, m*sizeof( long long ));
-	//int test =2;
-	//TODO: undo this test change
-	//long long info = LAPACKE_dgetrf(LAPACK_ROW_MAJOR, test, test, A, test,P);
-	long long info = LAPACKE_dgetrf( LAPACK_ROW_MAJOR, m, n, 
-		A, n, 
-		P);
+        long long info = LAPACKE_mkl_dgetrfnpi( LAPACK_ROW_MAJOR, m, n,n, A, n);
 	if (info < 0) {
-
 		return info;
 	}
 
@@ -168,7 +157,6 @@ int fastpca_lu_l(long long m, long long n, double * A) {
 			A[i*n+j] =newVal;
 		}
 	}
-	fastpca_aligned_free(P);
 	return info;
 }
 int fastpca_qr_q(long long m, long long n, double * A) {

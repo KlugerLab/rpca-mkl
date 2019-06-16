@@ -10,4 +10,4 @@ cblas_dnrm2
 cblas_dgemm
 MKL_free
 MKL_Domain_Set_Num_Threads
-
+LAPACKE_mkl_dgetrfnpi
