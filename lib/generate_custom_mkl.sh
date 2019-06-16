@@ -13,3 +13,4 @@ cp libfastpca_custommkl.dylib ../fastRPCA/inst/libs/
 ##On Linux
 #First make a dynamic library that exports the necessary functions
 make -C /opt/intel/mkl/tools/builder/ libintel64 export=`pwd`/mkl_fxn_list name=`pwd`/libfastpca_custommkl
+cp libfastpca_custommkl.so ../fastRPCA/inst/libs/

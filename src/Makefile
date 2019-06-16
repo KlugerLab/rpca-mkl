@@ -1,4 +1,5 @@
 MKL_INCLUDE=/opt/intel/compilers_and_libraries_2019.4.233/mac/mkl/include/ #Replace with the path on your machine
+MKL_INCLUDE=/data/george/intel/compilers_and_libraries/linux/mkl/include/ #Replace with the path on your machine
 
 EXE_INCLUDEPATH=-I../include
 #CFLAGS=-O3 -std=c++0x -m64 -DMKL_ILP64 -fopenmp -DDEBUG -DUSE_MKL
